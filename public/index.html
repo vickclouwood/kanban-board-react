@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/icon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/256x256.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>React Electron App</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Titan+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&family=Titan+One&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div class="text-13" id="root"></div>
+  </body>
+</html>
+
+<script type="text/javascript">
+  const { remote } = require("electron");
+  const { Menu, MenuItem } = remote;
+
+  const menu = new Menu();
+
+  // Build menu one item at a time, unlike
+  menu.append(new MenuItem({ label: "Select All", role: "selectAll" }));
+  menu.append(new MenuItem({ label: "Undo", role: "undo" }));
+  menu.append(new MenuItem({ label: "Redo", role: "redo" }));
+  menu.append(new MenuItem({ label: "Cut", role: "cut" }));
+  menu.append(new MenuItem({ label: "Copy", role: "copy" }));
+  menu.append(new MenuItem({ label: "Paste", role: "paste" }));
+
+  window.addEventListener(
+    "contextmenu",
+    (e) => {
+      e.preventDefault();
+      menu.popup(remote.getCurrentWindow());
+    },
+    false
+  );
+</script>

@@ -36,6 +36,36 @@ function App() {
     getLanes();
   };
 
+  // enable adding new lanes to the board
+  const canAddLanes = true;
+
+  // enable editable
+  const editable = true;
+
+  // can edit lane title
+  const editLaneTitle = true;
+
+  // adding new lane gets saved to firebase
+  const onLaneAdd = async (lane) => {
+    console.log(lane);
+    await addLane(lane);
+  };
+
+  // on lane update
+  const onLaneUpdate = async (lane) => {
+    console.log(lane);
+    await setDoc(collection(db, "lanes"), lane.id, lane);
+  };
+
+  // on lane delete
+  const onLaneDelete = async (laneId) => {
+    console.log(laneId);
+    await setDoc(collection(db, "lanes"), laneId, {
+      title: "",
+      cards: [],
+    });
+  };
+
   const handleCardAdd = async (card, laneId) => {
     console.log(card);
     console.log(laneId);
@@ -49,6 +79,25 @@ function App() {
     });
     await setDoc(doc(db, "lanes", laneId), dragLane);
   };
+
+  // moving card across lanes gets saved to firebase
+  // const onCardMoveAcrossLanes = async (cardId, sourceLaneId, targetLaneId) => {
+  //   console.log(cardId);
+  //   console.log(sourceLaneId);
+  //   console.log(targetLaneId);
+  //   const dragLane = board.boardData.lanes.find(
+  //     (lane) => lane.id === sourceLaneId
+  //   );
+  //   const dropLane = board.boardData.lanes.find(
+  //     (lane) => lane.id === targetLaneId
+  //   );
+  //   const dragCard = dragLane.cards.find((card) => card.id === cardId);
+  //   const dropCard = dropLane.cards.find((card) => card.id === cardId);
+  //   dragLane.cards.splice(dragLane.cards.indexOf(dragCard), 1);
+  //   dropLane.cards.push(dragCard);
+  //   await setDoc(doc(db, "lanes", sourceLaneId), dragLane);
+  //   await setDoc(doc(db, "lanes", targetLaneId), dropLane);
+  // };
 
   const handleDragEnd = async (cardId, sourceLaneId, targetLaneId) => {
     console.log("drag ended");
@@ -110,16 +159,22 @@ function App() {
       </div>
       <div className="App-intro">
         <Board
-          editable
+          editable={editable}
           onCardAdd={handleCardAdd}
           data={board.boardData}
           draggable
-          handleDragEnd={handleDragEnd}
+          // handleDragEnd={handleDragEnd}
           onCardDelete={onCardDelete}
           cardStyle={cardStyle}
-          style={style}
+          // style={style}
           laneStyle={laneStyle}
           style={{ backgroundColor: "rgb(238,238,238)", fontFamily: "Verdana" }}
+          canAddLanes={canAddLanes}
+          editLaneTitle={editLaneTitle}
+          onLaneAdd={onLaneAdd}
+          onLaneUpdate={onLaneUpdate}
+          onLaneDelete={onLaneDelete}
+          // onCardMoveAcrossLanes={onCardMoveAcrossLanes}
         />
       </div>
     </div>

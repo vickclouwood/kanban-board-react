@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "author": "Demo",
   "description": "React Electron Desktop Application",
-  "main": "build/electron.js",
+  "main": "public/electron.js",
   "homepage": "./",
   "productName": "React Electron",
   "license": "UNLICENSED",
@@ -15,7 +15,8 @@
     "buildwin": "npm run build && electron-builder build --win --x64",
     "buildmac": "npm run build && electron-builder -m",
     "test": "craco test",
-    "eject": "craco eject"
+    "eject": "craco eject",
+    "publish": "electron-builder -p always"
   },
   "build": {
     "asar": true,
@@ -97,6 +98,8 @@
     "@fortawesome/react-fontawesome": "^0.1.17",
     "cors": "^2.8.5",
     "electron-is-dev": "2.0.0",
+    "electron-log": "^4.4.6",
+    "electron-updater": "^4.6.5",
     "express": "^4.17.1",
     "firebase": "^9.6.8",
     "kanban-board-from-react-trello": "^2.4.3",
@@ -110,6 +113,7 @@
     "react-search-box": "^2.2.1",
     "react-sidebar": "^3.0.2",
     "react-trello": "^2.2.11",
+    "scss": "^0.2.4",
     "web-vitals": "^1.0.1"
   },
   "devDependencies": {

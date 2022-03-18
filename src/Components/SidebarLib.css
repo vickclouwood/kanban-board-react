@@ -12,17 +12,22 @@
   position: absolute;
   margin-top: 3px;
   margin-left: 12px;
+  display: inline-block;
 }
 
 .list-items {
   display: flex;
   flex-direction: column;
-  justify-content: left;
-  align-items: left;
+  /* justify-content: center; */
+  /* align-items: center; */
   list-style-type: none;
-  color: #000;
+  color: #475e7b;
   cursor: pointer;
-  padding: 0 15px 20px 20px;
+  padding: 0 0px 20px 0px;
+  width: 250px;
+  max-width: 400px;
+  text-align: left;
+  margin-bottom: 500px;
 }
 
 .li-items {
@@ -43,6 +48,6 @@ p {
   align-items: left;
   padding: auto;
   border: 1px solid rgb(223, 199, 199);
-  background-color: rgb(208, 227, 238);
+  background-color: #e5e8ec;
   border-radius: 6px;
 }

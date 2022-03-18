@@ -132,10 +132,12 @@ function Kanban() {
     fontFamily: "Verdana",
     fontSize: "1rem",
     fontColor: "white",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
+    // display: "flex",
+    // justifyContent: "",
+    // alignItems: "left",
     borderRadius: "5px",
+    backgroundColor: "#0179BF",
+    marginLeft: "5px",
   };
 
   const laneStyle = {
@@ -143,8 +145,9 @@ function Kanban() {
     fontSize: "1rem",
     fontColor: "white",
     display: "flex",
-    justifyContent: "center",
+    justifyContent: "space-between",
     alignItems: "center",
+    backgroundColor: "#E1E4E6",
   };
 
   const clearOnSelect = (value) => {
@@ -161,6 +164,11 @@ function Kanban() {
   //     setInputText(lowerCase);
   //   };
 
+  const searchBarStyles = {
+    flexBasis: "18rem",
+    position: "relative",
+  };
+
   return (
     <div className="App-intro2">
       {/* <nav className="login-link">
@@ -168,6 +176,7 @@ function Kanban() {
       </nav> */}
       <SidebarLib />
       <ReactSearchBox
+        style={searchBarStyles}
         placeholder="Search for a card"
         value="Doe"
         data={board.boardData}
@@ -189,12 +198,12 @@ function Kanban() {
         // handleDragEnd={handleDragEnd}
         onCardDelete={onCardDelete}
         cardStyle={cardStyle}
-        // style={style}
+        style={style}
         laneStyle={laneStyle}
-        style={{
-          backgroundColor: "rgb(238,238,238)",
-          fontFamily: "Verdana",
-        }}
+        // style={{
+        //   backgroundColor: "#0179BF",
+        //   fontFamily: "Verdana",
+        // }}
         canAddLanes={canAddLanes}
         editLaneTitle={editLaneTitle}
         onLaneAdd={onLaneAdd}

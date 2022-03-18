@@ -34,8 +34,23 @@ function Login() {
   };
   return (
     <div className="login-form">
-      <h1>Please Sign in to continue</h1>
-      <button onClick={signInWithGoogle}>Sign in with Google</button>
+      <img src="https://img.icons8.com/external-flaticons-flat-flat-icons/64/000000/external-kanban-work-from-home-flaticons-flat-flat-icons.png" />{" "}
+      <input
+        className="login-input"
+        type="email"
+        name="email"
+        placeholder="Email"
+      />
+      <input
+        className="login-input"
+        type="password"
+        name="Password"
+        placeholder="Password"
+      />
+      <button className="login-btn">Sign in</button>
+      <button className="login-btn" onClick={signInWithGoogle}>
+        Sign in with Google
+      </button>
     </div>
   );
 }

@@ -35,8 +35,22 @@ iZzUdc {
 }
 
 .sidebar-btn {
-  padding: 9px 20px;
+  display: flex;
+  align-items: center;
+  padding: 11px 20px;
   border-radius: 5px;
-  background-color: black;
+  background-color: #0179bf;
   margin-top: 55px;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 11px 20px;
+  border-radius: 5px;
+  background-color: #0179bf;
+}
+
+.list-items {
+  list-style-type: none;
 }

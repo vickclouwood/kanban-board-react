@@ -41,7 +41,7 @@ export const SiderbarLibStyle = {
   //     opacity: 0,
   //     visibility: "hidden",
   //     transition: "opacity .3s ease-out, visibility .3s ease-out",
-  //     // backgroundColor: "rgba(0,0,0,.3)",
+  //     backgroundColor: "rgba(0,0,0,.3)",
   //   },
   //   dragHandle: {
   //     zIndex: 1,

@@ -1,73 +1,42 @@
-.App {
-  height: 50px;
-  padding: 10px;
+.knbn-heading {
+  display: inline-block;
+  align-items: flex-start;
+  padding-left: 20px;
+  /* background-color: red; */
+  font-weight: 700;
+  font-size: larger;
+  font-family: sans-serif;
+}
+
+button {
+  background-color: #4caf50;
+  border: none;
   color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
 }
 
-.App-header {
-  background-color: #222;
-  height: 50px;
-  padding: 10px;
-  color: white;
-}
-
-.App-intro {
-  font-size: small;
-  margin: 0;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.navbar {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #f1f1f1;
-  padding: 10px;
+.sc-llYSUQ,
+fMINrO {
+  color: black;
 }
 
 .sc-eCstlR,
-sidebar-btn {
-  /* display: flex; */
-  /* flex-direction: row; */
-  background-color: #f1f1f1;
-  padding: 10px;
-  width: 50%;
-  display: inline-block;
+iZzUdc {
+  width: 400px;
+  max-width: 500px;
+  margin-left: 60px;
+  margin-bottom: 10px;
 }
 
-.sc-fKVqWL {
-  padding: 0.5em;
-}
-
-.sc-fKVqWL button {
-  border: none;
-}
-
-.react-trello-lane {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.sc-gsDKAQ {
-  height: 80px;
-  width: 200px;
-  font-size: smaller;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
+.sidebar-btn {
+  padding: 9px 20px;
+  border-radius: 5px;
+  background-color: black;
+  margin-top: 55px;
 }

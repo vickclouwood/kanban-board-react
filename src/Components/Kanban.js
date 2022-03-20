@@ -6,6 +6,7 @@ import ReactSearchBox from "react-search-box";
 import SidebarLib from "./SidebarLib";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { BsFillKanbanFill } from "react-icons/bs";
 
 function Kanban() {
   const [board, setBoard] = React.useState({
@@ -119,35 +120,37 @@ function Kanban() {
   };
 
   const cardStyle = {
-    background: "white",
-    borderRadius: "5px",
-    padding: "10px",
-    margin: "5px",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
+    // background: "white",
+    // borderRadius: "5px",
+    // padding: "10px",
+    // margin: "5px",
+    // display: "flex",
+    // flexDirection: "column",
+    // justifyContent: "space-between",
+    // fontFamily: "Verdana",
+    // fontWeight: "400",
   };
 
   const style = {
-    fontFamily: "Verdana",
-    fontSize: "1rem",
-    fontColor: "white",
-    // display: "flex",
-    // justifyContent: "",
-    // alignItems: "left",
-    borderRadius: "5px",
-    backgroundColor: "#0179BF",
-    marginLeft: "5px",
+    // fontFamily: "Verdana",
+    // fontSize: "1rem",
+    // fontColor: "white",
+    // // display: "flex",
+    // // justifyContent: "",
+    // // alignItems: "left",
+    // borderRadius: "5px",
+    // // backgroundColor: "#0179BF",
+    // marginLeft: "5px",
   };
 
   const laneStyle = {
-    fontFamily: "Verdana",
-    fontSize: "1rem",
-    fontColor: "white",
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    backgroundColor: "#E1E4E6",
+    // fontFamily: "Verdana",
+    // fontSize: "1rem",
+    // fontColor: "white",
+    // display: "flex",
+    // justifyContent: "space-between",
+    // alignItems: "center",
+    // backgroundColor: "#E1E4E6",
   };
 
   const clearOnSelect = (value) => {
@@ -164,19 +167,23 @@ function Kanban() {
   //     setInputText(lowerCase);
   //   };
 
-  const searchBarStyles = {
-    flexBasis: "18rem",
-    position: "relative",
-  };
+  // const searchBarStyles = {
+  //   flexBasis: "18rem",
+  //   position: "relative",
+  // };
 
   return (
     <div className="App-intro2">
+      <h2 className="knbn-heading">
+        {" "}
+        <BsFillKanbanFill /> Starboard
+      </h2>
       {/* <nav className="login-link">
         <Link to="/">Login</Link>
       </nav> */}
       <SidebarLib />
       <ReactSearchBox
-        style={searchBarStyles}
+        // style={searchBarStyles}
         placeholder="Search for a card"
         value="Doe"
         data={board.boardData}
@@ -197,9 +204,9 @@ function Kanban() {
         draggable
         // handleDragEnd={handleDragEnd}
         onCardDelete={onCardDelete}
-        cardStyle={cardStyle}
-        style={style}
-        laneStyle={laneStyle}
+        // cardStyle={cardStyle}
+        // style={style}
+        // laneStyle={laneStyle}
         // style={{
         //   backgroundColor: "#0179BF",
         //   fontFamily: "Verdana",

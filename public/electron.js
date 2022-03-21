@@ -140,11 +140,11 @@ if (!gotTheLock) {
       ]);
 
       const imgInstance = nativeImage.createFromPath(
-        path.join(__dirname, "logo512.png")
+        path.join(__dirname, "/logo.png")
       );
 
       trayIcon = new Tray(imgInstance.resize({ height: 16, width: 16 }));
-      trayIcon.setToolTip("React Electron App");
+      trayIcon.setToolTip("Starboard");
       trayIcon.setContextMenu(contextMenu);
       trayIcon.on("click", () => {
         mainWindow.isVisible() ? mainWindow.hide() : mainWindow.show();

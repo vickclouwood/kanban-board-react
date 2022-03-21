@@ -2,7 +2,6 @@
   display: inline-block;
   align-items: flex-start;
   padding-left: 20px;
-  /* background-color: red; */
   font-weight: 700;
   font-size: larger;
   font-family: sans-serif;
@@ -30,7 +29,7 @@ fMINrO {
 iZzUdc {
   width: 400px;
   max-width: 500px;
-  margin-left: 60px;
+  margin-left: 75px;
   margin-bottom: 10px;
 }
 
@@ -41,6 +40,7 @@ iZzUdc {
   border-radius: 5px;
   background-color: #0179bf;
   margin-top: 55px;
+  margin-left: 10px;
 }
 
 .navbar {
@@ -48,9 +48,45 @@ iZzUdc {
   align-items: center;
   padding: 11px 20px;
   border-radius: 5px;
-  background-color: #0179bf;
+  background-color: #ffffff;
+  height: 600px;
 }
 
 .list-items {
   list-style-type: none;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 0;
+}
+
+.li-items {
+  display: flex;
+  align-items: center;
+  /* padding: 11px 20px; */
+  border-radius: 5px;
+  background-color: #ffffff;
+  height: 50px;
+}
+
+p.li-items {
+  font-size: larger;
+  font-family: sans-serif;
+  font-weight: 700;
+  border: 1px solid #0179bf;
+  padding: 5px 10px 5px 10px;
+}
+
+p.li-items:hover {
+  background-color: #0179bf;
+  color: white;
+}
+
+.sc-iJKOTD {
+  color: black;
+}
+
+.sc-iqseJM {
+  margin-right: 2px;
 }

@@ -1,12 +1,22 @@
 import Board from "react-trello";
 import React, { useState, useEffect } from "react";
 import { db } from "../Firebase";
-import { collection, addDoc, getDocs, setDoc, doc } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  getDocs,
+  setDoc,
+  doc,
+  deleteField,
+  updateDoc,
+  deleteDoc,
+} from "firebase/firestore";
 import ReactSearchBox from "react-search-box";
 import SidebarLib from "./SidebarLib";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { BsFillKanbanFill } from "react-icons/bs";
+import logo from "../images/logo.png";
 
 function Kanban() {
   const [board, setBoard] = React.useState({
@@ -55,6 +65,10 @@ function Kanban() {
 
   // adding new lane gets saved to firebase
   const onLaneAdd = async (lane) => {
+    lane.cards = [];
+    lane.label = "";
+    lane.currentPage = 1;
+    lane.id = lane.title;
     console.log(lane);
     await addLane(lane);
   };
@@ -66,17 +80,15 @@ function Kanban() {
   };
 
   // on lane delete
+  // delete entire document and its subcollection using firebase deleteField
   const onLaneDelete = async (laneId) => {
-    console.log(laneId);
-    await setDoc(collection(db, "lanes"), laneId, {
-      title: "",
-      cards: [],
-    });
+    await deleteDoc(doc(db, "lanes", laneId));
   };
 
   const handleCardAdd = async (card, laneId) => {
     console.log(card);
     console.log(laneId);
+    console.log(board.boardData.lanes);
     const dragLane = board.boardData.lanes.find((lane) => lane.id === laneId);
     // console.log(dragLane);
     dragLane.cards.push({
@@ -85,7 +97,8 @@ function Kanban() {
       description: card.description,
       // label: card.label,
     });
-    await setDoc(doc(db, "lanes", laneId), dragLane);
+    console.log(laneId);
+    await setDoc(doc(db, "lanes", laneId), dragLane, { merge: true });
   };
 
   const handleDragEnd = async (cardId, sourceLaneId, targetLaneId) => {
@@ -103,7 +116,7 @@ function Kanban() {
     const index = dragLane.cards.indexOf(card);
     dragLane.cards.splice(index, 1);
     dropLane.cards.splice(index, 0, card);
-    // dropLane.cards.push(card);
+    dropLane.cards.push(card);
     console.log(dragLane);
     console.log(dropLane);
     console.log(board.boardData.lanes);
@@ -119,40 +132,6 @@ function Kanban() {
     await setDoc(doc(db, "lanes", laneId), dragLane);
   };
 
-  const cardStyle = {
-    // background: "white",
-    // borderRadius: "5px",
-    // padding: "10px",
-    // margin: "5px",
-    // display: "flex",
-    // flexDirection: "column",
-    // justifyContent: "space-between",
-    // fontFamily: "Verdana",
-    // fontWeight: "400",
-  };
-
-  const style = {
-    // fontFamily: "Verdana",
-    // fontSize: "1rem",
-    // fontColor: "white",
-    // // display: "flex",
-    // // justifyContent: "",
-    // // alignItems: "left",
-    // borderRadius: "5px",
-    // // backgroundColor: "#0179BF",
-    // marginLeft: "5px",
-  };
-
-  const laneStyle = {
-    // fontFamily: "Verdana",
-    // fontSize: "1rem",
-    // fontColor: "white",
-    // display: "flex",
-    // justifyContent: "space-between",
-    // alignItems: "center",
-    // backgroundColor: "#E1E4E6",
-  };
-
   const clearOnSelect = (value) => {
     setSearch(value);
   };
@@ -161,29 +140,14 @@ function Kanban() {
     setSearch("");
   };
 
-  //   let inputHandler = (e) => {
-  //     //convert input text to lower case
-  //     const lowerCase = e.target.value.toLowerCase();
-  //     setInputText(lowerCase);
-  //   };
-
-  // const searchBarStyles = {
-  //   flexBasis: "18rem",
-  //   position: "relative",
-  // };
-
   return (
     <div className="App-intro2">
-      <h2 className="knbn-heading">
-        {" "}
-        <BsFillKanbanFill /> Starboard
-      </h2>
-      {/* <nav className="login-link">
-        <Link to="/">Login</Link>
-      </nav> */}
+      <div className="knbn-heading-div">
+        <img className="logo-main" src={logo} alt="logo" />
+        <h2 className="knbn-heading"> Starboard</h2>
+      </div>
       <SidebarLib />
       <ReactSearchBox
-        // style={searchBarStyles}
         placeholder="Search for a card"
         value="Doe"
         data={board.boardData}
@@ -195,28 +159,18 @@ function Kanban() {
         onChange={(value) => console.log(value)}
         iconBoxSize="48px"
         leftIcon={<>🔍</>}
-        // onSelect={(record: any) => console.log(record)}
       />
       <Board
         editable={editable}
         onCardAdd={handleCardAdd}
         data={board.boardData}
         draggable
-        // handleDragEnd={handleDragEnd}
         onCardDelete={onCardDelete}
-        // cardStyle={cardStyle}
-        // style={style}
-        // laneStyle={laneStyle}
-        // style={{
-        //   backgroundColor: "#0179BF",
-        //   fontFamily: "Verdana",
-        // }}
         canAddLanes={canAddLanes}
         editLaneTitle={editLaneTitle}
         onLaneAdd={onLaneAdd}
         onLaneUpdate={onLaneUpdate}
         onLaneDelete={onLaneDelete}
-        // onCardMoveAcrossLanes={onCardMoveAcrossLanes}
       />
     </div>
   );

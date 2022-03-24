@@ -1,10 +1,31 @@
+.knbn-heading-div {
+  display: flex;
+  align-items: center;
+  /* border: 1px solid #e40f0f; */
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-left: 20px;
+  /* padding-top: 10px; */
+}
+
 .knbn-heading {
   display: inline-block;
   align-items: flex-start;
-  padding-left: 20px;
+  padding-left: 15px;
   font-weight: 700;
   font-size: larger;
   font-family: sans-serif;
+}
+
+.logo-main {
+  display: inline;
+  /* margin-top: 100px; */
+  /* border: 1px solid #e40f0f; */
+  width: 40px;
+  height: 40px;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0;
 }
 
 button {
@@ -33,54 +54,96 @@ iZzUdc {
   margin-bottom: 10px;
 }
 
+.sidebar-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-logo {
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 12px;
+  margin-left: 55px;
+  margin-bottom: 10px;
+}
+
 .sidebar-btn {
   display: flex;
   align-items: center;
   padding: 11px 20px;
   border-radius: 5px;
   background-color: #0179bf;
-  margin-top: 55px;
+  margin-top: 150px;
   margin-left: 10px;
+}
+
+button.sidebar-btn {
+  margin-top: 75px;
 }
 
 .navbar {
   display: flex;
-  align-items: center;
-  padding: 11px 20px;
+  align-items: flex-start;
+  margin-top: -13px;
   border-radius: 5px;
   background-color: #ffffff;
-  height: 600px;
+  height: 100%;
+  width: 100%;
+}
+
+.sidebar-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -24px;
 }
 
 .list-items {
+  /* background-color: red; */
   list-style-type: none;
-  padding: 10px;
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   align-items: flex-start;
-  margin-top: 0;
+  margin-right: 20px;
+
+  /* margin-top: 0; */
 }
 
 .li-items {
   display: flex;
   align-items: center;
-  /* padding: 11px 20px; */
   border-radius: 5px;
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
   height: 50px;
 }
 
 p.li-items {
-  font-size: larger;
+  /* background-color: red; */
+  font-size: small;
   font-family: sans-serif;
   font-weight: 700;
-  border: 1px solid #0179bf;
+  /* border: 1px solid #cde0eb; */
+  border-width: 100;
   padding: 5px 10px 5px 10px;
+  height: 40px;
+  width: 200px;
+  margin-left: -18px;
+  /* border-bottom: 5px solid #f88c00; */
 }
 
 p.li-items:hover {
-  background-color: #0179bf;
-  color: white;
+  background-color: #f8f0ef;
+  /* color: white; */
+  cursor: pointer;
+}
+
+hr {
+  width: 140%;
+  margin-left: -53px;
+  margin-right: 0;
 }
 
 .sc-iJKOTD {

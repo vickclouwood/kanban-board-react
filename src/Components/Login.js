@@ -2,6 +2,7 @@ import React from "react";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import Logo from "../images/logo.png";
 // import { app } from "../Firebase";
 
 function Login() {
@@ -9,6 +10,9 @@ function Login() {
   //   const auth = getAuth(app);
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
+  provider.setCustomParameters({
+    prompt: "select_account",
+  });
 
   const signInWithGoogle = () => {
     signInWithPopup(auth, provider)
@@ -34,7 +38,7 @@ function Login() {
   };
   return (
     <div className="login-form">
-      <img src="https://img.icons8.com/external-flaticons-flat-flat-icons/64/000000/external-kanban-work-from-home-flaticons-flat-flat-icons.png" />{" "}
+      <img src={Logo} alt="Logo" />{" "}
       <input
         className="login-input"
         type="email"

@@ -2,10 +2,13 @@ import React from "react";
 import Sidebar from "react-sidebar";
 import "./SidebarLib.css";
 import * as FaIcons from "react-icons/fa";
-import { Link, BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { SidebarData } from "./SidebarData";
 import { SiderbarLibStyle } from "./SidebarLibStyle";
 import { ipcRenderer } from "electron";
+// import { FiSettings } from "react-icons/fi";
+// import { BsFillKanbanFill } from "react-icons/bs";
+import logo from "../images/logo.png";
 
 class SidebarLib extends React.Component {
   constructor(props) {
@@ -26,15 +29,20 @@ class SidebarLib extends React.Component {
         sidebar={
           <div className="navbar">
             <ul className="list-items">
+              <div sidebar-top>
+                <img className="sidebar-logo" src={logo} />
+                <h1 className="sidebar-heading">Starboard</h1>
+              </div>
+              <hr />
               {SidebarData.map((item, index) => (
                 <li key={index} className={item.cName}>
                   <p onClick={item.onClick} className="li-items">
+                    {/* {<item.icon />} */}
                     {item.title}
                   </p>
                 </li>
               ))}
             </ul>
-
             <Link to="#" className="menu-bars"></Link>
           </div>
         }

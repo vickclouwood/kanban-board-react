@@ -6,15 +6,14 @@ import { Link } from "react-router-dom";
 import { SidebarData } from "./SidebarData";
 import { SiderbarLibStyle } from "./SidebarLibStyle";
 import { ipcRenderer } from "electron";
-// import { FiSettings } from "react-icons/fi";
-// import { BsFillKanbanFill } from "react-icons/bs";
+import { FiSettings } from "react-icons/fi";
 import logo from "../images/logo.png";
 
 class SidebarLib extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      sidebarOpen: true,
+      sidebarOpen: false,
     };
     this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
   }
@@ -31,14 +30,13 @@ class SidebarLib extends React.Component {
             <ul className="list-items">
               <div sidebar-top>
                 <img className="sidebar-logo" src={logo} />
-                <h1 className="sidebar-heading">Starboard</h1>
+                <h1 className="sidebar-heading"> Star Board</h1>
               </div>
               <hr />
               {SidebarData.map((item, index) => (
                 <li key={index} className={item.cName}>
                   <p onClick={item.onClick} className="li-items">
-                    {/* {<item.icon />} */}
-                    {item.title}
+                    {item.icon} {item.title}
                   </p>
                 </li>
               ))}

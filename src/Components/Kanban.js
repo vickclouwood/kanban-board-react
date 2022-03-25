@@ -18,6 +18,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { BsFillKanbanFill } from "react-icons/bs";
 import logo from "../images/logo.png";
 
+const data = require("./data.json");
+
 function Kanban() {
   const [board, setBoard] = React.useState({
     boardData: { lanes: [] },
@@ -27,6 +29,18 @@ function Kanban() {
   const lanesCollectionRef = collection(db, "lanes");
 
   const [search, setSearch] = React.useState("");
+
+  // create a function that fetches data from data.json file and saves it to local storage
+  // const fetchData = () => {
+  //   fetch("data.json")
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       localStorage.setItem("data", JSON.stringify(data));
+  //     });
+  // };
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
 
   const getLanes = async () => {
     let arr = [];
@@ -101,6 +115,24 @@ function Kanban() {
     await setDoc(doc(db, "lanes", laneId), dragLane, { merge: true });
   };
 
+  // on card move across lanes save it to local storage
+  // const onCardMoveAcrossLanes = async (cardId, sourceLaneId, targetLaneId) => {
+  //   console.log(cardId);
+  //   console.log(sourceLaneId);
+  //   console.log(targetLaneId);
+  //   const dragLane = board.boardData.lanes.find(
+  //     (lane) => lane.id === sourceLaneId
+  //   );
+  //   const dropLane = board.boardData.lanes.find(
+  //     (lane) => lane.id === targetLaneId
+  //   );
+  //   const dragCard = dragLane.cards.find((card) => card.id === cardId);
+  //   dropLane.cards.push(dragCard);
+  //   dragLane.cards = dragLane.cards.filter((card) => card.id !== cardId);
+  //   await setDoc(doc(db, "lanes", sourceLaneId), dragLane, { merge: true });
+  //   await setDoc(doc(db, "lanes", targetLaneId), dropLane, { merge: true });
+  // };
+
   const handleDragEnd = async (cardId, sourceLaneId, targetLaneId) => {
     console.log("drag ended");
     console.log(`cardId: ${cardId}`);
@@ -144,22 +176,22 @@ function Kanban() {
     <div className="App-intro2">
       <div className="knbn-heading-div">
         <img className="logo-main" src={logo} alt="logo" />
-        <h2 className="knbn-heading"> Starboard</h2>
+        <h2 className="knbn-heading"> Star Board</h2>
+        <SidebarLib />
+        <ReactSearchBox
+          placeholder="Search for a card"
+          value="Doe"
+          data={board.boardData}
+          callback={(record) => console.log(record)}
+          clearOnSelect={clearOnSelect}
+          onFocus={() => {
+            console.log("This function is called when is focussed");
+          }}
+          onChange={(value) => console.log(value)}
+          iconBoxSize="48px"
+          leftIcon={<>🔍</>}
+        />
       </div>
-      <SidebarLib />
-      <ReactSearchBox
-        placeholder="Search for a card"
-        value="Doe"
-        data={board.boardData}
-        callback={(record) => console.log(record)}
-        clearOnSelect={clearOnSelect}
-        onFocus={() => {
-          console.log("This function is called when is focussed");
-        }}
-        onChange={(value) => console.log(value)}
-        iconBoxSize="48px"
-        leftIcon={<>🔍</>}
-      />
       <Board
         editable={editable}
         onCardAdd={handleCardAdd}
@@ -171,6 +203,8 @@ function Kanban() {
         onLaneAdd={onLaneAdd}
         onLaneUpdate={onLaneUpdate}
         onLaneDelete={onLaneDelete}
+        // handleDragEnd={handleDragEnd}
+        // onCardMoveAcrossLanes={onCardMoveAcrossLanes}
       />
     </div>
   );

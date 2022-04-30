@@ -1,11 +1,11 @@
 {
-  "name": "star-board",
+  "name": "taskify",
   "version": "0.1.0",
   "author": "Demo",
-  "description": "A kanban board app",
-  "main": "build/electron.js",
+  "description": "A kanban board app built using React.js",
+  "main": "public/electron.js",
   "homepage": "./",
-  "productName": "Star Board",
+  "productName": "Taskify",
   "license": "UNLICENSED",
   "scripts": {
     "start": "cross-env BROWSER=none PORT=4321 craco start",
@@ -21,9 +21,9 @@
   "build": {
     "asar": true,
     "extends": null,
-    "productName": "Star Board",
+    "productName": "Taskify",
     "appId": "com.demo.us",
-    "copyright": "© 2022 Star Board",
+    "copyright": "© 2022 Taskify",
     "files": [
       "./build/**/*"
     ],
@@ -48,7 +48,7 @@
           "NSAllowsArbitraryLoads": true
         }
       },
-      "icon": "public/logo.png",
+      "icon": "public/logo6.png",
       "hardenedRuntime": true
     },
     "win": {
@@ -60,7 +60,7 @@
           ]
         }
       ],
-      "icon": "public/logo.png",
+      "icon": "public/logo6.png",
       "verifyUpdateCodeSignature": false,
       "publisherName": "Clouwood"
     },

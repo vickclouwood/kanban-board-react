@@ -14,8 +14,8 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/Kanban" element={<Kanban />} />
+          <Route path="/" element={<Kanban />} />
+          <Route path="/Login" element={<Login />} />
           {/* <Login /> */}
           {/* <SidebarLib /> */}
           {/* <Kanban /> */}

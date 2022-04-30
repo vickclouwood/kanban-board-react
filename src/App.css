@@ -1,6 +1,10 @@
-.react-trello-board {
-  /* border: 5px solid rgb(0, 0, 0); */
-  width: 100%;
+/* .react-trello-board {
+  border: 5px solid rgb(0, 0, 0);
+} */
+
+.App-intro2 {
+  width: fit-content;
+  block-size: fit-content;
 }
 
 .knbn-heading-div {
@@ -96,8 +100,8 @@ button.sidebar-btn {
   margin-top: -13px;
   border-radius: 5px;
   background-color: #ffffff;
-  height: 100%;
-  width: 100%;
+  /* height: 100%; */
+  /* width: 100%; */
 }
 
 .sidebar-heading {
@@ -137,6 +141,7 @@ p.li-items {
   height: 40px;
   width: 200px;
   margin-left: -18px;
+  justify-content: space-between;
   /* border-bottom: 5px solid #f88c00; */
 }
 

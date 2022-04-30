@@ -2,7 +2,7 @@ import React from "react";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import Logo from "../images/logo.png";
+import Logo from "../images/logo6.png";
 // import { app } from "../Firebase";
 
 function Login() {

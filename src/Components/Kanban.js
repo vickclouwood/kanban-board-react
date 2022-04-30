@@ -16,7 +16,7 @@ import SidebarLib from "./SidebarLib";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { BsFillKanbanFill } from "react-icons/bs";
-import logo from "../images/logo.png";
+import logo from "../images/logo6.png";
 
 const data = require("./data.json");
 
@@ -30,18 +30,6 @@ function Kanban() {
 
   const [search, setSearch] = React.useState("");
 
-  // create a function that fetches data from data.json file and saves it to local storage
-  // const fetchData = () => {
-  //   fetch("data.json")
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       localStorage.setItem("data", JSON.stringify(data));
-  //     });
-  // };
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
-
   const getLanes = async () => {
     let arr = [];
     const querySnapshot = await getDocs(collection(db, "lanes"));
@@ -51,8 +39,8 @@ function Kanban() {
       arr.push(doc.data());
     });
 
-    // const data = await getDocs(lanesCollectionRef);
-    // console.log(data);
+    const data = await getDocs(lanesCollectionRef);
+    console.log(data);
     console.log(arr);
     setBoard({ boardData: { lanes: arr } });
   };
@@ -79,6 +67,7 @@ function Kanban() {
 
   // adding new lane gets saved to firebase
   const onLaneAdd = async (lane) => {
+    key = lane.id;
     lane.cards = [];
     lane.label = "";
     lane.currentPage = 1;
@@ -88,13 +77,19 @@ function Kanban() {
   };
 
   // on lane update
-  const onLaneUpdate = async (lane) => {
-    console.log(lane);
-    await setDoc(collection(db, "lanes"), lane.id, lane);
-  };
+  // const onLaneUpdate = async (lane) => {
+  //   console.log(lane);
+  //   await setDoc(collection(db, "lanes"), lane.id, lane);
+  // };
 
   // on lane delete
   // delete entire document and its subcollection using firebase deleteField
+  // const onLaneDelete = async (lane) => {
+  //   console.log(lane);
+  //   await deleteField(collection(db, "lanes"), lane.id);
+  //   getLanes();
+  // };
+
   const onLaneDelete = async (laneId) => {
     await deleteDoc(doc(db, "lanes", laneId));
   };
@@ -106,32 +101,15 @@ function Kanban() {
     const dragLane = board.boardData.lanes.find((lane) => lane.id === laneId);
     // console.log(dragLane);
     dragLane.cards.push({
+      key: card.id,
       id: dragLane.cards.length + 1,
       title: card.title,
       description: card.description,
-      // label: card.label,
+      label: card.label ? card.label : "",
     });
     console.log(laneId);
     await setDoc(doc(db, "lanes", laneId), dragLane, { merge: true });
   };
-
-  // on card move across lanes save it to local storage
-  // const onCardMoveAcrossLanes = async (cardId, sourceLaneId, targetLaneId) => {
-  //   console.log(cardId);
-  //   console.log(sourceLaneId);
-  //   console.log(targetLaneId);
-  //   const dragLane = board.boardData.lanes.find(
-  //     (lane) => lane.id === sourceLaneId
-  //   );
-  //   const dropLane = board.boardData.lanes.find(
-  //     (lane) => lane.id === targetLaneId
-  //   );
-  //   const dragCard = dragLane.cards.find((card) => card.id === cardId);
-  //   dropLane.cards.push(dragCard);
-  //   dragLane.cards = dragLane.cards.filter((card) => card.id !== cardId);
-  //   await setDoc(doc(db, "lanes", sourceLaneId), dragLane, { merge: true });
-  //   await setDoc(doc(db, "lanes", targetLaneId), dropLane, { merge: true });
-  // };
 
   const handleDragEnd = async (cardId, sourceLaneId, targetLaneId) => {
     console.log("drag ended");
@@ -176,7 +154,7 @@ function Kanban() {
     <div className="App-intro2">
       <div className="knbn-heading-div">
         <img className="logo-main" src={logo} alt="logo" />
-        <h2 className="knbn-heading"> Star Board</h2>
+        <h2 className="knbn-heading">Taskify</h2>
         <SidebarLib />
         <ReactSearchBox
           placeholder="Search for a card"
@@ -193,6 +171,7 @@ function Kanban() {
         />
       </div>
       <Board
+        key={board.boardData.lanes.length}
         editable={editable}
         onCardAdd={handleCardAdd}
         data={board.boardData}
@@ -201,9 +180,9 @@ function Kanban() {
         canAddLanes={canAddLanes}
         editLaneTitle={editLaneTitle}
         onLaneAdd={onLaneAdd}
-        onLaneUpdate={onLaneUpdate}
+        // onLaneUpdate={onLaneUpdate}
         onLaneDelete={onLaneDelete}
-        // handleDragEnd={handleDragEnd}
+        handleDragEnd={handleDragEnd}
         // onCardMoveAcrossLanes={onCardMoveAcrossLanes}
       />
     </div>

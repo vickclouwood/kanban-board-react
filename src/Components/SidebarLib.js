@@ -7,7 +7,7 @@ import { SidebarData } from "./SidebarData";
 import { SiderbarLibStyle } from "./SidebarLibStyle";
 import { ipcRenderer } from "electron";
 import { FiSettings } from "react-icons/fi";
-import logo from "../images/logo.png";
+import logo from "../images/logo6.png";
 
 class SidebarLib extends React.Component {
   constructor(props) {
@@ -30,7 +30,7 @@ class SidebarLib extends React.Component {
             <ul className="list-items">
               <div sidebar-top>
                 <img className="sidebar-logo" src={logo} />
-                <h1 className="sidebar-heading"> Star Board</h1>
+                <h1 className="sidebar-heading">Taskify</h1>
               </div>
               <hr />
               {SidebarData.map((item, index) => (
